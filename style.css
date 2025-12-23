@@ -1,12 +1,6 @@
-/* ===========================
-   Global
-=========================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
+/* =========================
+   Global Styles
+========================= */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
@@ -15,9 +9,6 @@ body {
   color: #333;
 }
 
-/* ===========================
-   Header
-=========================== */
 header {
   background: #1e90ff;
   color: white;
@@ -28,16 +19,13 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* ===========================
-   Main
-=========================== */
 main {
   padding: 1rem;
 }
 
-/* ===========================
+/* =========================
    Dashboard
-=========================== */
+========================= */
 .dashboard {
   display: flex;
   flex-wrap: wrap;
@@ -53,15 +41,15 @@ main {
   flex: 1 1 45%;
   background: #f0f8ff;
   text-align: center;
-  padding: 0.3rem;
+  padding: 0.5rem;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   font-size: 0.85rem;
 }
 
-/* ===========================
-   Clear All button
-=========================== */
+/* =========================
+   Clear All Button
+========================= */
 .clear-container {
   margin-bottom: 0.5rem;
 }
@@ -83,9 +71,9 @@ main {
   box-shadow: 0 2px 6px rgba(0,0,0,0.2) inset;
 }
 
-/* ===========================
-   Month cards
-=========================== */
+/* =========================
+   Month Cards
+========================= */
 .month-card {
   background: white;
   margin-bottom: 1rem;
@@ -138,9 +126,9 @@ main {
   background: #ff4d4f;
 }
 
-/* ===========================
+/* =========================
    Floating Action Button
-=========================== */
+========================= */
 .fab {
   position: fixed;
   bottom: 20px;
@@ -162,9 +150,9 @@ main {
   box-shadow: 0 6px 14px rgba(0,0,0,0.35);
 }
 
-/* ===========================
+/* =========================
    Modal
-=========================== */
+========================= */
 .modal {
   display: none;
   position: fixed;
@@ -187,14 +175,15 @@ main {
 .modal-content {
   background-color: #fff;
   margin: 60px auto;
-  padding: 1rem;
+  padding: 15px;
   border-radius: 8px;
   width: 90%;
   max-width: 400px;
+  max-height: 90vh; /* prevents modal from exceeding screen */
+  overflow-y: auto; /* scroll if content is too tall */
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transform: translateY(-50px);
   transition: transform 0.3s ease;
-  overflow-x: hidden;
 }
 
 .modal.show .modal-content {
@@ -213,25 +202,23 @@ main {
   color: #000;
 }
 
-/* ===========================
-   Inputs and floating labels
-=========================== */
+/* =========================
+   Inputs and Floating Labels
+========================= */
 .input-group {
   position: relative;
-  margin-top: 1.2rem; /* more space for label */
+  margin-top: 1rem;
 }
 
 .input-group input,
 .input-group select {
   width: 100%;
-  max-width: 100%;
-  padding: 0.75rem 0.5rem 0.25rem 0.5rem; /* top padding bigger for label */
-  font-size: 0.9rem;
+  padding: 0.6rem;
+  font-size: 0.95rem;
   border: 1px solid #ccc;
   border-radius: 6px;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
-  background-color: #fff;
 }
 
 .input-group input:focus,
@@ -242,26 +229,24 @@ main {
 
 .input-group label {
   position: absolute;
-  top: 0.75rem; /* start closer to top of input */
-  left: 0.5rem;
+  top: 0.6rem;
+  left: 0.6rem;
   pointer-events: none;
-  transition: 0.2s ease all;
+  transition: 0.3s ease all;
   font-size: 0.85rem;
   color: #555;
-  background: transparent;
-  padding: 0 0.1rem;
+  background: white;
+  padding: 0 0.2rem;
 }
 
 .input-group input:focus + label,
 .input-group select:focus + label,
 .input-group input:not(:placeholder-shown) + label,
 .input-group select:not([value=""]) + label {
-  top: -0.5rem;       /* float above input field */
+  top: -0.6rem;
   left: 0.4rem;
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   color: #1e90ff;
-  background: #fff;   /* small background for contrast */
-  padding: 0 0.2rem;  /* small padding for readability */
 }
 
 /* Modal submit button */
@@ -282,9 +267,9 @@ main {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* ===========================
+/* =========================
    Month card expand animation
-=========================== */
+========================= */
 .month-card .entry-container {
   max-height: 0;
   overflow: hidden;
@@ -295,4 +280,30 @@ main {
 .month-card .entry-container.show {
   max-height: 1000px;
   opacity: 1;
+}
+
+/* =========================
+   Mobile Adjustments (iPhone)
+========================= */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .input-group input,
+  .input-group select {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .input-group label {
+    top: 0.6rem;
+    left: 0.6rem;
+  }
+
+  .modal-content button {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
 }
